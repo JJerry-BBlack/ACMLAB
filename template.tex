@@ -1,0 +1,421 @@
+\documentclass[twocolumn,a4paper]{article}  %两栏，A4大小
+
+\usepackage{xeCJK} % 中文支持
+\setCJKmainfont{KaiTi} % 设置中文字体
+
+\usepackage{amsmath} % 数学公式支持
+% \let\over\frac % 替换\over命令为\frac
+
+\usepackage{listings,xcolor}  %插入代码
+\usepackage[landscape]{geometry} % 设置页边距
+\usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage{fancyhdr} % 自定义页眉页脚
+\usepackage{calligra}
+\usepackage{epstopdf}
+\usepackage[hidelinks]{hyperref}
+\usepackage{subfig}
+
+\setsansfont{Consolas} % 设置英文字体
+\setmonofont[Mapping={}]{Maple Mono} % 英文引号之类的正常显示，相当于设置英文字体
+\geometry{left=1cm,right=1cm,top=2cm,bottom=0.5cm} % 页边距
+\setlength{\columnsep}{30pt}  %两栏之间的间距大小
+% \setlength\columnseprule{0.4pt} % 分割线
+
+% 页眉、页脚设置
+\pagestyle{fancy}
+% \lhead{CUMTB}
+\lhead{\CJKfamily{hei} ACM-ICPC Code Template}
+\chead{}
+% \rhead{Page \thepage}
+\rhead{\CJKfamily{hei} 第 \thepage 页}
+\lfoot{} 
+\cfoot{}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.4pt} 
+\renewcommand{\footrulewidth}{0.4pt}
+
+% 代码格式设置
+\lstset{
+	language    = c++,
+	numbers     = left,
+	numberstyle = \tiny,
+	breaklines  = true,
+	captionpos  = b,
+	tabsize     = 4,
+	frame       = shadowbox,
+	columns     = fullflexible,
+	commentstyle = \color[RGB]{0,128,0}\textit,
+	keywordstyle = \color[RGB]{0,0,255}\textit,
+	basicstyle   = \small\ttfamily,
+	stringstyle  = \color[RGB]{148,0,209}\ttfamily,
+	rulesepcolor = \color{red!20!green!20!blue!20},
+	showstringspaces = false,
+}
+
+\title{\CJKfamily{hei} \bfseries ACM-ICPC Code Template}
+\author{Jerry Black}
+\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+
+\begin{document}\small
+	
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\begin{figure}[htbp]
+	\centering
+	\subfloat{
+		\includegraphics[height=5.5cm]{pic/ACM.png}
+	}
+	\hfil
+	\subfloat{
+		\includegraphics[height=5.5cm]{pic/logo.png}
+	}
+\end{figure}
+\centering
+\quad\\[2cm]
+\textsl{\Large Zhejiang Normal University}\\[0.5cm] 
+\textsl{\large School of Mathematical Sciences}\\[0.5cm] 
+\makeatletter
+\HRule \\[0.4cm]
+{ \huge \bfseries \@title}\\[0.4cm] 
+\HRule \\[1.5cm]
+\begin{minipage}{0.4\textwidth}
+	\begin{flushleft} \large
+		\emph{Author:}\\
+		\@author 
+	\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+	\begin{flushright} \large
+		\emph{Date:} \\
+		\textup{\today}
+	\end{flushright}
+\end{minipage}\\[3cm]
+\makeatother
+\vfill
+\end{titlepage}
+
+\newpage
+\pagestyle{empty}
+\renewcommand{\contentsname}{Contest}
+\tableofcontents %生成目录
+\newpage\clearpage
+\newpage
+\pagestyle{fancy}
+\setcounter{page}{1}   %从当前页开始计算页数
+%% ====================================================================
+\section{Graph}
+\subsection{Dijkstra}
+\lstinputlisting{Graph/Dijkstra.cpp}
+\subsection{匈牙利算法}
+\lstinputlisting{Graph/xiongyali.cpp}
+\subsection{Hopcroft\_Karp(匈牙利算法优化)}
+\lstinputlisting{Graph/HopcroftKarp.cpp}
+\subsection{二分图染色+拓扑排序}
+\lstinputlisting{Graph/BipartiteColoring&TopologicalSorting.cpp}
+\subsection{网络流}
+\subsubsection{最大流}
+\lstinputlisting{Graph/Dinic.cpp}
+\subsubsection{KM}
+\lstinputlisting{Graph/KM.cpp}
+\subsubsection{最小费用最大流}
+\lstinputlisting{Graph/MinCostMaxFlow.cpp}
+\subsubsection{最大费用可行流}
+\lstinputlisting{Graph/MaxCostFeasibleFlow.cpp}
+\subsection{连通分量}
+\subsubsection{强连通分量}
+\lstinputlisting{Graph/SCC.cpp}
+\subsubsection{边双连通分量}
+\lstinputlisting{Graph/e-DCC.cpp}
+\subsubsection{点双连通分量}
+\lstinputlisting{Graph/p-DCC.cpp}
+\subsubsection{割点}
+\lstinputlisting{Graph/cutvertex.cpp}
+\subsubsection{割边}
+\lstinputlisting{Graph/bridge.cpp}
+\subsubsection{圆方树}
+\lstinputlisting{Graph/block-forest.cpp}
+\subsection{2-SAT}
+\lstinputlisting{Graph/twosat.cpp}
+\subsection{虚树}
+\subsection{树分治}
+\subsubsection{点分治}
+\lstinputlisting{Graph/pointdivide.cpp}
+\subsubsection{点分树}
+\lstinputlisting{Graph/pointdividetree.cpp}
+\lstinputlisting{Graph/virtual-tree.cpp}
+\subsection{异或最小生成树}
+\lstinputlisting{Graph/XorMST.cpp}
+%% ===================================================================
+\newpage
+\section{Data Structure}
+\subsection{种类并查集}
+\lstinputlisting{DataStructure/KindDSU.cpp}
+\subsection{二维树状数组}
+\subsubsection{单点修改，区间查询}
+\lstinputlisting{DataStructure/2DFenwickTree1.cpp}
+\subsubsection{区间修改，单点查询}
+\lstinputlisting{DataStructure/2DFenwickTree2.cpp}
+\subsubsection{区间修改，区间查询}
+\lstinputlisting{DataStructure/2DFenwickTree3.cpp}
+\subsection{线段树}
+\subsubsection{维护等差数列}
+\lstinputlisting{DataStructure/SegTree1.cpp}
+\subsubsection{有加有乘}
+\lstinputlisting{DataStructure/SegTree2.cpp}
+\subsubsection{最大子段和}
+\lstinputlisting{DataStructure/SegTree3.cpp}
+\subsection{非递归版本线段树}
+\lstinputlisting{DataStructure/Lazy_Segtree.cpp}
+\subsubsection{用法1:}
+\lstinputlisting{DataStructure/Lazy_Segtree_Usage1.cpp}
+\subsubsection{用法2:}
+\lstinputlisting{DataStructure/Lazy_Segtree_Usage2.cpp}
+\subsection{动态开点线段树}
+\lstinputlisting{DataStructure/DynamicSegTree.cpp}
+\subsection{Segment Tree Beats}
+\subsubsection{区间取min 、max  $O(nlogn)$}
+\lstinputlisting{DataStructure/SegTreeBeats1.cpp}
+\subsubsection{区间取min 、max +区间加减 $O(nlog^2n)$}
+\lstinputlisting{DataStructure/SegTreeBeats2.cpp}
+\subsection{可持久化线段树}
+\subsubsection{静态版本，权值线段树}
+\lstinputlisting{DataStructure/SustainableSegTree1.cpp}
+\subsubsection{动态版本，支持修改}
+\lstinputlisting{DataStructure/SustainableSegTree2.cpp}
+\subsection{线段树合并\&分裂}
+\lstinputlisting{DataStructure/SegTreeMerge&Split.cpp}
+\subsection{分块}
+\lstinputlisting{DataStructure/Sqrt.cpp}
+\subsection{珂朵莉树}
+\lstinputlisting{DataStructure/OldDriversTree.cpp}
+\subsection{莫队}
+\subsubsection{普通莫队}
+\lstinputlisting{DataStructure/Mo1.cpp}
+\subsubsection{带修莫队}
+\lstinputlisting{DataStructure/Mo2.cpp}
+\subsubsection{树上莫队}
+\lstinputlisting{DataStructure/Mo3.cpp}
+\subsubsection{回滚莫队}
+\lstinputlisting{DataStructure/Mo4.cpp}
+\lstinputlisting{DataStructure/Mo5.cpp}
+\subsection{CDQ分治}
+\subsubsection{二维}
+\lstinputlisting{DataStructure/2DCDQ.cpp}
+\subsubsection{三维}
+\lstinputlisting{DataStructure/3DCDQ.cpp}
+\subsection{链式前向星}
+\lstinputlisting{DataStructure/ChainForwardStar.cpp}
+\subsection{Kruskal重构树}
+\lstinputlisting{DataStructure/KruskalRebuildTree.cpp}
+\subsection{树链剖分}
+\lstinputlisting{DataStructure/poufen.cpp}
+\subsection{ST表}
+\lstinputlisting{DataStructure/SparseTable.cpp}
+\subsection{DSU on Tree}
+\lstinputlisting{DataStructure/DsuOnTree.cpp}
+\subsection{线性基}
+\lstinputlisting{DataStructure/LinearBase.cpp}
+\subsection{平衡树}
+\subsubsection{替罪羊树}
+\lstinputlisting{DataStructure/ScapegoatTree.cpp}
+\subsubsection{FHQ\_Treap}
+\lstinputlisting{DataStructure/FHQTreap1.cpp}
+\lstinputlisting{DataStructure/FHQTreap2.cpp}
+\subsubsection{Splay}
+\lstinputlisting{DataStructure/Splay.cpp}
+\subsection{LCT}
+\lstinputlisting{DataStructure/LCT.cpp}
+%% ===================================================================
+\newpage
+\section{String}
+\subsection{KMP}
+\lstinputlisting{String/KMP.cpp}
+\subsection{马拉车}
+\lstinputlisting{String/manacher.cpp}
+\subsection{哈希}
+\subsubsection{一维}
+\lstinputlisting{String/Hash1.cpp}
+\subsubsection{二维}
+\lstinputlisting{String/Hash2.cpp}
+\subsection{Trie树}
+\lstinputlisting{String/Trie.cpp}
+\subsection{AC自动机}
+\lstinputlisting{String/ACAM.cpp}
+\subsection{回文自动机}
+\lstinputlisting{String/PAM1.cpp}
+\subsection{广义回文自动机}
+\lstinputlisting{String/PAM2.cpp}
+\subsection{后缀数组(SA)}
+\lstinputlisting{String/SA.cpp}
+\subsection{后缀数组(SA-IS)}
+\lstinputlisting{String/SA-IS.cpp}
+\subsection{后缀自动机}
+\lstinputlisting{String/SAM1.cpp}
+\subsection{广义后缀自动机}
+\lstinputlisting{String/SAM2.cpp}
+%% ===================================================================
+\newpage
+\section{Mathematics}
+\subsection{快速乘}
+\lstinputlisting{Math/FastMul.cpp}
+\subsection{欧几里得算法}
+\lstinputlisting{Math/Gcd.cpp}
+\subsection{拓展欧几里得算法}
+\lstinputlisting{Math/exGcd.cpp}
+\subsection{BSGS}
+\lstinputlisting{Math/BSGS.cpp}
+\subsection{埃氏筛}
+\lstinputlisting{Math/EratosthenesSieve.cpp}
+\subsection{欧拉筛}
+\lstinputlisting{Math/EularSieve.cpp}
+\subsection{米勒罗宾素性测试\&Pollard rho算法}
+\lstinputlisting{Math/MillerRobin&PollardRho.cpp}
+\subsection{Stein算法(大整数的GCD)}
+\lstinputlisting{Math/Stein.cpp}
+\subsection{逆元}
+\lstinputlisting{Math/Inv1.cpp}
+\lstinputlisting{Math/Inv2.cpp}
+\subsection{欧拉函数}
+\lstinputlisting{Math/Eular1.cpp}
+\lstinputlisting{Math/Eular2.cpp}
+\subsection{欧拉降幂}
+$$
+	a^b\mod c=
+	\begin{cases}
+		a^{b\mod \varphi(c)}, &\gcd(a,c)=1\\
+		a^b, &\gcd(a,c)\ne1,b<\varphi(m)\\
+		a^{b\mod \varphi(c)+\varphi(c)}, &\gcd(a,c)\ne1,b\ge\varphi(m)
+	\end{cases}\mod c
+$$
+\subsection{拓展中国剩余定理}
+\lstinputlisting{Math/exCRT.cpp}
+\subsection{中国剩余定理}
+\lstinputlisting{Math/CRT.cpp}
+\subsection{二次剩余}
+\lstinputlisting{Math/Cipolla.cpp}
+\subsection{拓展欧拉定理}
+\lstinputlisting{Math/EularDropPow.cpp}
+\subsection{组合数}
+\lstinputlisting{Math/Binom1.cpp}
+\lstinputlisting{Math/Binom2.cpp}
+\subsection{卢卡斯定理}
+\lstinputlisting{Math/Lucas.cpp}
+\subsection{拓展卢卡斯定理}
+\lstinputlisting{Math/exLucas.cpp}
+\subsection{积性函数}
+\lstinputlisting{Math/MathFunction1.cpp}
+\lstinputlisting{Math/MathFunction2.cpp}
+\subsection{杜教筛}
+$$
+\begin{aligned}
+sum(n)&=\sum_{i=1}^{n}f(i)\\
+\sum_{i=1}^n h(i)=\sum_{i=1}^{n}(f*g)(i)&=\sum_{i=1}^n \sum_{d\mid i}g(d)f\left({\frac{i}{d}}\right)=
+\sum_{d=1}^n g(d)\sum_{i=1}^{\left\lfloor{\frac{n}{d}}\right\rfloor}=
+\sum_{d=1}^n g(d)sum\left(\left\lfloor{\frac{n}{d}}\right\rfloor\right)\\
+\Rightarrow g(1)sum(n)&=\sum_{i=1}^n h(i)-\sum_{i=2}^n g(i)sum\left(\left\lfloor{\frac{n}{i}}\right\rfloor\right)
+\end{aligned}
+$$
+\lstinputlisting{Math/DYHSieve.cpp}
+\subsection{Min\_25筛}
+To Be Studied...
+\lstinputlisting{Math/Min25Sieve.cpp}
+\subsection{莫比乌斯函数}
+\lstinputlisting{Math/Mobios.cpp}
+\subsection{快速数论变换}
+\lstinputlisting{Math/NTT.cpp}
+\subsection{FWT}
+\lstinputlisting{Math/FWT.cpp}
+\subsection{BM}
+\lstinputlisting{Math/BM.cpp}
+\subsection{矩阵求逆}
+\lstinputlisting{Math/MatrixInv.cpp}
+\subsection{矩阵乘法\&快速幂}
+\lstinputlisting{Math/Matrix.cpp}
+\subsection{整除分块}
+\lstinputlisting{Math/Divide.cpp}
+\subsection{自适应辛普森积分}
+$$
+\int_a^bf(x)\mathrm{d}x\approx{\frac{b-a}{6}}\left[f(a)+4\times f\left({\frac{a+b}{2}}\right)+f(b)\right]
+$$
+\lstinputlisting{Math/Simpson.cpp}
+\subsection{最小二乘法}
+给定 $n$ 个点,求一条直线 $y=kx+b$ 最匹配(写出方差式子求偏导)
+$$
+\begin{cases}
+	\displaystyle \Sigma xk+nb-\Sigma y=0\\
+	\displaystyle \Sigma x^2k+\Sigma xb-\Sigma xy=0
+\end{cases}
+\rightarrow
+\begin{cases}
+	\displaystyle k={\frac{-\Sigma x\Sigma y+n\Sigma xy}{\Sigma x\Sigma x-\Sigma x^2n}}\\
+	\displaystyle b={\frac{-\Sigma x^2\Sigma y+\Sigma x\Sigma xy}{\Sigma x^2n-\Sigma x\Sigma x}}
+\end{cases}
+$$
+\lstinputlisting{Math/OrdinaryLeastSquares.cpp}
+\subsection{高精度}
+\lstinputlisting{Math/BigInt.cpp}
+%% ===================================================================
+\newpage
+\section{Dynamic Programming}
+\subsection{最长公共子序列}
+\lstinputlisting{DP/LCS.cpp}
+\subsection{背包}
+\subsubsection{01背包}
+\lstinputlisting{DP/01BackPack.cpp}
+\subsubsection{完全背包}
+\lstinputlisting{DP/CompleteBackPack.cpp}
+\subsubsection{多重背包}
+\lstinputlisting{DP/MultipleBackPack.cpp}
+\subsubsection{多种背包混合问题}
+\lstinputlisting{DP/MixedBackPack.cpp}
+\subsubsection{二维费用的背包问题}
+\lstinputlisting{DP/2DFeaBackPack.cpp}
+\subsubsection{分组的背包问题}
+\lstinputlisting{DP/GroupBackPack.cpp}
+\subsubsection{有依赖的背包问题}
+\lstinputlisting{DP/DependentBackPack.cpp}
+\subsection{状压dp}
+\lstinputlisting{DP/TSP.cpp}
+\subsection{数位dp}
+\lstinputlisting{DP/DigitalDP.cpp}
+\subsection{带障碍的路径计数}
+\lstinputlisting{DP/RoadCountingWithBlocks.cpp}
+%% ===================================================================
+\newpage
+\section{Geometry}
+\subsection{二维}
+\lstinputlisting{Geometry/2D.cpp}
+\subsection{三维}
+\lstinputlisting{Geometry/3D.cpp}
+%% ===================================================================
+\newpage
+\section{Others}
+\subsection{头文件}
+\lstinputlisting{Others/Head.cpp}
+\subsection{吸氧大法}
+\lstinputlisting{Others/Oxygen.cpp}
+\subsection{迭代器}
+\lstinputlisting{Others/Iterator.cpp}
+\subsection{lambda函数}
+\lstinputlisting{Others/Lambda.cpp}
+\subsection{结构体}
+\lstinputlisting{Others/Struct.cpp}
+\subsection{快读快写}
+\lstinputlisting{Others/FastIO1.cpp}
+\lstinputlisting{Others/FastIO2.cpp}
+\lstinputlisting{Others/FastIO3.cpp}
+\subsection{取模}
+\lstinputlisting{Others/ModInt.cpp}
+\subsection{Int128}
+\lstinputlisting{Others/int128.cpp}
+\subsection{gp\_hash\_table}
+\lstinputlisting{Others/gp_hash_table.cpp}
+\subsection{关同步流}
+\begin{lstlisting}
+ios::sync_with_stdio(false);cin.tie(0);
+\end{lstlisting}
+\subsection{计时器}
+\lstinputlisting{Others/Clock.cpp}
+\end{document}
