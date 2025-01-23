@@ -1,0 +1,12 @@
+*.git
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.run.xml
+*.bbl
+*.bcf
+*.blg
+*.gz
